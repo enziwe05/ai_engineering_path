@@ -1,6 +1,9 @@
 #project 1 - Calorie Tracker
 
 #my data
+import json
+
+
 daily_goal = 0 
 meals = []
 
@@ -37,6 +40,15 @@ def total_protein():
         total += meal["protein"]        
     return total
 
+def save_meals():
+    with open("meals.json", "w") as file:
+        json.dump(meals, file)
+
+def load_meals():
+    with open("meals.json", "r") as file:
+        content = json.load(file)
+        return content
+
 while True:
     print("\n==========================")
     print("   CALORIE TRACKER")
@@ -55,6 +67,7 @@ while True:
         daily_goal= set_goals()
     elif choice == "2":
         meals.append(add_meals())
+        save_meals()
     elif choice == "3":
         view_meals()
     elif choice == "4":
