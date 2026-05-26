@@ -5,7 +5,10 @@ import json
 
 
 daily_goal = 0 
-meals = []
+try:
+    meals = load_meals()
+except:
+    meals = []
 
 #set goals
 def set_goals():
